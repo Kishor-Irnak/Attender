@@ -7,7 +7,7 @@
 
      <!--Linking CSS file tp HTML-->
     <link rel="stylesheet" href="styles.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
     <!--Linking Flowbite Library-->
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 
@@ -27,25 +27,25 @@
      <aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
            <ul class="space-y-2 font-medium">
-              <li>
-                 <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                       <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                       <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-                    </svg>
-                    <span class="ms-3">Dashboard
-                    </span>
-                 </a>
-              </li>
-              <li>
-                 <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-                       <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
-                    </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Kanban</span>
-                    <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
-                 </a>
-              </li>
+            <li>
+               <a href="teacher.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                     <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                     <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+                  </svg>
+                  <span class="ms-3">Attendance
+                  </span>
+               </a>
+            </li>
+            <li>
+               <a href="teacher_marks.html" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                     <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
+                  </svg>
+                  <span class="flex-1 ms-3 whitespace-nowrap">Result</span>
+                  <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Beta</span>
+               </a>
+            </li>
               <li>
                  <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -72,23 +72,23 @@
                  </a>
               </li>
               <li>
-                 <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
-                    </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
-                 </a>
-              </li>
-              <li>
-                 <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                       <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
-                       <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
-                       <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"/>
-                    </svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
-                 </a>
-              </li>
+               <a href="#" class="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
+                     <path d="M16 14V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 0 0 0-2h-1v-2a2 2 0 0 0 2-2ZM4 2h2v12H4V2Zm8 16H3a1 1 0 0 1 0-2h9v2Z"/>
+                  </svg>
+                  <span class="ms-3">Documentation</span>
+               </a>
+            </li>
+            <li>
+               <a href="#" class="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                     <path d="M18 0H6a2 2 0 0 0-2 2h14v12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Z"/>
+                     <path d="M14 4H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2ZM2 16v-6h12v6H2Z"/>
+                  </svg>
+                  <span class="ms-3">Components</span>
+               </a>
+            </li>
+            <li>
            </ul>
            <div id="dropdown-cta" class="p-4 mt-6 rounded-lg bg-blue-50 dark:bg-blue-900" role="alert">
               <div class="flex items-center mb-3">
@@ -111,44 +111,134 @@
      <div class=" bg-white dark:bg-gray-800 h-screen flex items-center justify-center grid grid-flow-col grid-rows-1">
     
     <!--PAGE START FROM HERE-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+   
         
     <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
     <div class="flex flex-col items-center justify-center min-h-screen p-4 ">
+     
+  
+         <div class="max-w-5xl mx-auto bg-white p-6 shadow-lg rounded-lg">
+             <h1 class="text-3xl font-bold mb-6 text-center">Student Result Manager</h1>
+             
+             <!-- Student Input Section -->
+             <div class="mb-4 flex flex-col sm:flex-row gap-2">
+                 <input type="text" id="studentName" placeholder="Student Name" class="border p-2 rounded w-full sm:w-auto">
+                 <input type="text" id="studentRoll" placeholder="Roll Number" class="border p-2 rounded w-full sm:w-auto">
+                 <button onclick="addStudent()" class="bg-blue-500 text-white px-4 py-2 rounded">Add Student</button>
+             </div>
+             
+             <!-- Subject Input Section -->
+             <div class="mb-4 flex flex-col sm:flex-row gap-2">
+                 <input type="text" id="subjectName" placeholder="Subject Name" class="border p-2 rounded w-full sm:w-auto">
+                 <button onclick="addSubject()" class="bg-green-500 text-white px-4 py-2 rounded">Add Subject</button>
+             </div>
+             
+             <!-- Student Result Table -->
+             <div class="overflow-x-auto bg-white shadow rounded-lg p-4">
+                 <table class="w-full border-collapse border border-gray-300" id="resultTable">
+                     <thead>
+                         <tr class="bg-gray-200">
+                             <th class="border p-2">Roll No</th>
+                             <th class="border p-2">Name</th>
+                             <th class="border p-2">Subjects & Marks</th>
+                         </tr>
+                     </thead>
+                     <tbody id="studentList"></tbody>
+                 </table>
+             </div>
+             
+             <!-- Actions -->
+             <div class="mt-4 text-center">
+                 <button onclick="downloadExcel()" class="bg-yellow-500 text-white px-4 py-2 rounded">Download Excel</button>
+             </div>
+         </div>
+     
+       
+   
+     
       
-      <form id="teacherForm" class="w-full max-w-md bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-          <h2 class="text-xl font-semibold text-center text-gray-900 dark:text-white mb-4">Enter Student Details</h2>
-          
-          <div class="mb-4">
-              <label for="studentName" class="block text-sm font-medium text-gray-900 dark:text-white">Student Name</label>
-              <input type="text" id="studentName" required class="mt-1 block w-full p-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-700 dark:text-white" placeholder="Example: Athuuu" />
-          </div>
-          
-          <div class="mb-4">
-              <label for="rollNumber" class="block text-sm font-medium text-gray-900 dark:text-white">Roll Number</label>
-              <input type="text" id="rollNumber" required class="mt-1 block w-full p-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-700 dark:text-white" placeholder="Example:16" />
-          </div>
-          
-          <div class="mb-4">
-              <label for="accessCode" class="block text-sm font-medium text-gray-900 dark:text-white">IEN Number</label>
-              <input type="password" id="accessCode" pattern="\d{8}" required class="mt-1 block w-full p-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-700 dark:text-white" placeholder="8-digit number" />
-          </div>
-          
-          <div class="flex justify-between items-center mt-4">
-              <button type="button" id="addSubject" class="w-1/2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg p-2 mr-2">Subject</button>
-              <button type="submit" class="w-1/2 text-white bg-green-600 hover:bg-green-700 rounded-lg p-2">Save</button>
-          </div>
-      </form>
       
-      <div id="subjectsContainer" class="w-full max-w-md mt-6 p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg">
-          <h3 class="text-lg font-medium text-gray-900 dark:text-white">Subjects & Marks:</h3>
-          <ul id="resultsList" class="list-disc pl-5 text-gray-900 dark:text-white mt-2"></ul>
-      </div>
+      
+   
   </div>
   </div>
   </div>
-    <script src="marks_Data.js"></script>
+    <script>
+      let students = JSON.parse(localStorage.getItem("students")) || [];
+let subjects = JSON.parse(localStorage.getItem("subjects")) || [];
+
+function saveData() {
+    localStorage.setItem("students", JSON.stringify(students));
+    localStorage.setItem("subjects", JSON.stringify(subjects));
+}
+
+function addStudent() {
+    let name = document.getElementById("studentName").value;
+    let roll = document.getElementById("studentRoll").value;
+    if (name && roll) {
+        students.push({ roll, name, marks: {} });
+        saveData();
+        renderTable();
+        document.getElementById("studentName").value = "";
+        document.getElementById("studentRoll").value = "";
+    }
+}
+
+function addSubject() {
+    let subject = document.getElementById("subjectName").value;
+    if (subject && !subjects.includes(subject)) {
+        subjects.push(subject);
+        saveData();
+        renderTable();
+        document.getElementById("subjectName").value = "";
+    }
+}
+
+function updateMarks(roll, subject, value) {
+    let student = students.find(s => s.roll === roll);
+    if (student) {
+        student.marks[subject] = value;
+        saveData();
+    }
+}
+
+function renderTable() {
+    let tableBody = document.getElementById("studentList");
+    tableBody.innerHTML = "";
+    students.forEach(student => {
+        let row = `<tr class='border'>
+            <td class='border p-2 text-center'>${student.roll}</td>
+            <td class='border p-2'>${student.name}</td>
+            <td class='border p-2'>
+                ${subjects.map(sub => `<div>
+                    ${sub}: <input type='number' class='border p-1 w-16' value='${student.marks[sub] || ""}'
+                    oninput='updateMarks("${student.roll}", "${sub}", this.value)'>
+                </div>`).join("")}
+            </td>
+        </tr>`;
+        tableBody.innerHTML += row;
+    });
+}
+
+function downloadExcel() {
+    let wb = XLSX.utils.book_new();
+    let wsData = [
+        ["Roll No", "Name", ...subjects]
+    ];
+    students.forEach(student => {
+        wsData.push([
+            student.roll,
+            student.name,
+            ...subjects.map(sub => student.marks[sub] || "")
+        ]);
+    });
+    let ws = XLSX.utils.aoa_to_sheet(wsData);
+    XLSX.utils.book_append_sheet(wb, ws, "Results");
+    XLSX.writeFile(wb, "Student_Results.xlsx");
+}
+
+renderTable();
+    </script>
     <script src="script.js"></script>
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
