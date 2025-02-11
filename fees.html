@@ -7,12 +7,63 @@
 
      <!--Linking CSS file tp HTML-->
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+        <div class="container mx-auto my-10 p-6 bg-white rounded-lg shadow-lg">
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
     <!--Linking Flowbite Library-->
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid black;
+            max-width: 600px;
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        .signature {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .signature div {
+            text-align: center;
+            width: 45%;
+        }
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
 </head>
-<body>
+<body onload="loadData()">
+
     
    <div class=" bg-white dark:bg-gray-800 h-screen flex items-center justify-center grid grid-flow-col grid-rows-1">
     <!--SIDE BAR-->
@@ -113,119 +164,150 @@
    
    
  
-        <div class="container mx-auto my-10 p-6 bg-white rounded-lg shadow-lg">
-            <h1 class="text-3xl font-bold text-center text-blue-600">Student Fee Management</h1>
-    
-            <!-- Form to Add Data -->
-            <form id="feeForm" class="mt-8 space-y-6">
-                <div class="flex space-x-4">
-                    <input type="text" id="studentName" placeholder="Student Name" class="w-full p-3 border border-gray-300 rounded-lg">
-                    <input type="number" id="paidAmount" placeholder="Paid Amount" class="w-full p-3 border border-gray-300 rounded-lg">
-                </div>
-                <div class="flex space-x-4 mt-4">
-                    <input type="date" id="paymentDate" class="w-full p-3 border border-gray-300 rounded-lg">
-                    <input type="text" id="paymentReason" placeholder="Reason for Payment" class="w-full p-3 border border-gray-300 rounded-lg">
-                </div>
-                <div class="mt-4">
-                    <input type="number" id="pendingAmount" placeholder="Pending Amount" class="w-full p-3 border border-gray-300 rounded-lg">
-                </div>
-                <button type="submit" class="w-full mt-4 p-3 bg-blue-600 text-white rounded-lg">Add Payment</button>
-            </form>
-    
-            <!-- Table to Display Student Data -->
-            <div class="mt-8 overflow-x-auto">
-                <table id="feeTable" class="w-full text-left table-auto">
-                    <thead class="bg-gray-200">
-                        <tr>
-                            <th class="py-2 px-4">Student Name</th>
-                            <th class="py-2 px-4">Paid Amount</th>
-                            <th class="py-2 px-4">Payment Date</th>
-                            <th class="py-2 px-4">Reason</th>
-                            <th class="py-2 px-4">Pending Amount</th>
-                            <th class="py-2 px-4">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        <!-- Data will be inserted here -->
-                    </tbody>
-                </table>
-            </div>
+
+  
+
+
+    <div class="header">
+        NEW HORIZON INSTITUTE OF TECHNOLOGY AND MANAGEMENT  
+        <br>Fee Payment Receipt
+    </div>
+
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <td><input type="text" id="studentName" oninput="saveData()"></td>
+        </tr>
+        <tr>
+            <th>Student ID</th>
+            <td><input type="text" id="studentID" oninput="saveData()"></td>
+        </tr>
+        <tr>
+            <th>Mobile Number</th>
+            <td><input type="text" id="studentMobile" oninput="saveData()"></td>
+        </tr>
+        <tr>
+            <th>Amount Paid</th>
+            <td><input type="text" id="amountPaid" oninput="saveData()"></td>
+        </tr>
+        <tr>
+            <th>Payment Mode</th>
+            <td>
+                <select id="paymentMode" onchange="saveData()">
+                    <option>Cash</option>
+                    <option>Credit Card</option>
+                    <option>Debit Card</option>
+                    <option>UPI</option>
+                    <option>Net Banking</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td id="date"></td>
+        </tr>
+    </table>
+
+    <div class="signature">
+        <div>
+            <p>Student Signature</p>
+            <br>________________
         </div>
-    
-        <script>
-            // Initialize an array to hold fee data
-            const feeData = [];
-    
-            // Handle form submission to add data
-            document.getElementById('feeForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-    
-                const studentName = document.getElementById('studentName').value;
-                const paidAmount = document.getElementById('paidAmount').value;
-                const paymentDate = document.getElementById('paymentDate').value;
-                const paymentReason = document.getElementById('paymentReason').value;
-                const pendingAmount = document.getElementById('pendingAmount').value;
-    
-                if (!studentName || !paidAmount || !paymentDate || !paymentReason || !pendingAmount) {
-                    alert("Please fill in all fields!");
-                    return;
-                }
-    
-                // Add new data to the feeData array
-                const newData = {
-                    studentName,
-                    paidAmount,
-                    paymentDate,
-                    paymentReason,
-                    pendingAmount
-                };
-                feeData.push(newData);
-                updateTable();
+        <div>
+            <p>Receiver Name & Sign</p>
+            <input type="text" id="receiverName" oninput="saveData()">
+            <br>________________
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="printReceipt()">Print Receipt</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+        <button onclick="clearData()">Clear Data</button>
+    </div>
+
+    <script>
+        document.getElementById('date').innerText = new Date().toLocaleDateString();
+
+        function printReceipt() {
+            window.print();
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            let studentName = document.getElementById("studentName").value || "N/A";
+            let studentID = document.getElementById("studentID").value || "N/A";
+            let studentMobile = document.getElementById("studentMobile").value || "N/A";
+            let amountPaid = document.getElementById("amountPaid").value || "N/A";
+            let paymentMode = document.getElementById("paymentMode").value || "N/A";
+            let receiverName = document.getElementById("receiverName").value || "N/A";
+            let date = new Date().toLocaleDateString();
+
+            doc.setFont("helvetica", "bold");
+            doc.text("NEW HORIZON INSTITUTE OF TECHNOLOGY AND MANAGEMENT", 20, 20);
+            doc.setFontSize(14);
+            doc.text("Fee Payment Receipt", 80, 30);
+
+            doc.autoTable({
+                startY: 40,
+                head: [["Field", "Details"]],
+                body: [
+                    ["Date", date],
+                    ["Student Name", studentName],
+                    ["Student ID", studentID],
+                    ["Mobile Number", studentMobile],
+                    ["Amount Paid", amountPaid],
+                    ["Payment Mode", paymentMode],
+                    ["Receiver Name", receiverName]
+                ],
+                theme: "grid",
+                styles: { fontSize: 12 }
             });
-    
-            // Update the table with current fee data
-            function updateTable() {
-                const tableBody = document.getElementById('tableBody');
-                tableBody.innerHTML = '';
-    
-                feeData.forEach((data, index) => {
-                    const row = document.createElement('tr');
-                    row.classList.add('border-b');
-    
-                    row.innerHTML = `
-                        <td class="py-2 px-4">${data.studentName}</td>
-                        <td class="py-2 px-4">${data.paidAmount}</td>
-                        <td class="py-2 px-4">${data.paymentDate}</td>
-                        <td class="py-2 px-4">${data.paymentReason}</td>
-                        <td class="py-2 px-4">${data.pendingAmount}</td>
-                        <td class="py-2 px-4">
-                            <button class="text-blue-600" onclick="generateReceipt(${index})">Generate Receipt</button>
-                        </td>
-                    `;
-                    tableBody.appendChild(row);
-                });
+
+            doc.text("Student Signature: ________________", 20, doc.lastAutoTable.finalY + 20);
+            doc.text("Receiver Signature: ________________", 20, doc.lastAutoTable.finalY + 40);
+
+            doc.save("Fee_Receipt.pdf");
+        }
+
+        function saveData() {
+            const formData = {
+                studentName: document.getElementById("studentName").value,
+                studentID: document.getElementById("studentID").value,
+                studentMobile: document.getElementById("studentMobile").value,
+                amountPaid: document.getElementById("amountPaid").value,
+                paymentMode: document.getElementById("paymentMode").value,
+                receiverName: document.getElementById("receiverName").value
+            };
+            localStorage.setItem("feeReceiptData", JSON.stringify(formData));
+        }
+
+        function loadData() {
+            const storedData = localStorage.getItem("feeReceiptData");
+            if (storedData) {
+                const formData = JSON.parse(storedData);
+                document.getElementById("studentName").value = formData.studentName || "";
+                document.getElementById("studentID").value = formData.studentID || "";
+                document.getElementById("studentMobile").value = formData.studentMobile || "";
+                document.getElementById("amountPaid").value = formData.amountPaid || "";
+                document.getElementById("paymentMode").value = formData.paymentMode || "Cash";
+                document.getElementById("receiverName").value = formData.receiverName || "";
             }
-    
-            // Generate PDF receipt for a specific student
-            function generateReceipt(index) {
-                const data = feeData[index];
-                const doc = new jsPDF();
-    
-                doc.setFontSize(16);
-                doc.text('Fee Receipt', 105, 20, null, null, 'center');
-                doc.setFontSize(12);
-                doc.text(`Student Name: ${data.studentName}`, 20, 40);
-                doc.text(`Paid Amount: ₹${data.paidAmount}`, 20, 50);
-                doc.text(`Payment Date: ${data.paymentDate}`, 20, 60);
-                doc.text(`Reason: ${data.paymentReason}`, 20, 70);
-                doc.text(`Pending Amount: ₹${data.pendingAmount}`, 20, 80);
-                doc.text('Thank you for your payment!', 105, 100, null, null, 'center');
-    
-                // Force the download with the filename containing the student's name
-                doc.save(`${data.studentName}_fee_receipt.pdf`);
-            }
-        </script>
- 
+        }
+
+        function clearData() {
+            localStorage.removeItem("feeReceiptData");
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentID").value = "";
+            document.getElementById("studentMobile").value = "";
+            document.getElementById("amountPaid").value = "";
+            document.getElementById("paymentMode").value = "Cash";
+            document.getElementById("receiverName").value = "";
+        }
+    </script>
+
 
   </div>
   </div>
